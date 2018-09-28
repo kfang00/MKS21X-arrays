@@ -11,7 +11,7 @@ class ArrayDemo {
 		String printar = "[";
 		for (int x = 0; x < ary.length; x++) {
 			printar += "[";
-			for (int y = 0; y < ary[x].length; y ++) {
+			for (int y = 0; (y + 1) < ary[x].length; y++) {
 				printar += ary[x][y] + ",";
 			}
 			printar += ary[x][ary[x].length - 1] + "]";
@@ -48,6 +48,22 @@ class ArrayDemo {
 		printArray(vals);
 	}
 
+	public static int[][] fill2DCopy(int[][] vals){
+		int[][] newvals = new int[vals.length][];
+		for (int x = 0; x < vals.length; x++) {
+			newvals[x] = new int[vals[x].length];
+			for (int y = 0; y < vals[x].length; y++) {
+				if (vals[x][y] < 0) {
+					newvals[x][y] = 3;
+				}
+				else {
+					newvals[x][y] = 1;
+				}
+			}
+		}
+		return newvals;
+	}
+
 	public static void main (String[] args) {
 		int[] test0a = new int[] {
 			1,2,3,4,5,6
@@ -62,9 +78,15 @@ class ArrayDemo {
 			{4,7,8,9,0,6},
 			{7,0,0,6,0,0},
 		};
+		int[][] test2 = new int[][] {
+			{0,0,-5,-7,-8,0},
+			{4,7,-8,-9,0,-6},
+			{-7,-8,-4,6,0,0},
+		};
 		printArray(test0a);
 		printArray(test0b);
 		System.out.println(countZeros2D(test1));
 		fill2D(test1);
+		printArray(fill2DCopy(test2));
 	}
 }
