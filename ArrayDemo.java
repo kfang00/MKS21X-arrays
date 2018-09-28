@@ -34,6 +34,19 @@ class ArrayDemo {
 		return count;
 	}
 
+	public static void fill2D(int[][] vals){
+		for (int x = 0; x < vals.length; x++) {
+			for (int y = 0; y < vals[x].length; y++) {
+				if (y == x) {
+					vals[x][y] = 3;
+				}
+				else {
+					vals[x][y] = 1;
+				}
+			}
+		}
+		printArray(vals);
+	}
 
 	public static void main (String[] args) {
 		int[] test0a = new int[] {
@@ -44,13 +57,14 @@ class ArrayDemo {
 			{2,5,2,6},
 			{8,6,5,4,6,7},
 		};
-		int[][] test1a = new int[][] {
+		int[][] test1 = new int[][] {
 			{0,0,5,7,8,0},
 			{4,7,8,9,0,6},
 			{7,0,0,6,0,0},
 		};
 		printArray(test0a);
 		printArray(test0b);
-		System.out.println(countZeros2D(test1a));
+		System.out.println(countZeros2D(test1));
+		fill2D(test1);
 	}
 }
